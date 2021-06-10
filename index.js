@@ -5,6 +5,9 @@ const DiscordJS = require('discord.js')
 require('discord-reply');
 const client = new DiscordJS.Client()
 const prefix = ">"
+const mclient = require('mongodb').mclient
+const mongoose = require('mongoose');
+
 
 
 client.commands = new DiscordJS.Collection();
@@ -17,6 +20,9 @@ for (const file of commandFiles) {
 	client.commands.set(command.name, command);
 }
 
+const database=require("./database/databaseconnect")
+
+database()
 
 client.on('ready',function(){
     function setStatus () {
