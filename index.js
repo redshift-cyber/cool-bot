@@ -34,8 +34,15 @@ client.on('ready',function(){
 
     console.log('Cool Bot is online!')
 })
-client.on('message', async message => {
 
+client.on("message", meesage => {
+
+    if (message.content === "hungry"){
+        msg.reply("I like feasting on knowledge and code that my developing teams feeds me")
+    }
+
+
+});
 
     if(message.mentions.has(client.user)){
         if (message.mentions.everyone) return;
@@ -79,7 +86,7 @@ setTimeout(() => timestamps.delete(message.author.id), cooldownAmount);
             }
 
 
-})
+
 
 
 
