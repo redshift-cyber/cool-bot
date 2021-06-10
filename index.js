@@ -37,7 +37,7 @@ client.on('ready',function(){
     client.user.setPresence({
         status: 'online',
         activity: {
-            name: "fortnite :), try pinging me!",
+            name: "Winter",
             type: 'PLAYING',
         }
     });
@@ -58,6 +58,18 @@ client.on('message', async message => {
             .setDescription(`Hi, my name is cool bot! Nice to meet you.`)
             message.lineReply(mentionedembed)
             }
+
+            client.on('message', async message => {
+
+    
+                if(message.mentions.has(client.user)){
+                    if (message.mentions.everyone) return;
+                    const mentionedembed = new DiscordJS.MessageEmbed()
+                        .setTitle('Hello!')
+                        .setColor('#038dff')
+                        .setDescription(`Hi, my name is cool bot! Nice to meet you.`)
+                        message.lineReply(mentionedembed)
+                        }
 
 
     if (!message.content.startsWith(prefix)) return;
@@ -112,16 +124,4 @@ client.on('message', async message => {
 
 
 client.login(process.env.DISCORD_TOKEN)
-
-
-
-
-
-
-
-
-
-
-
-
-
+})
