@@ -1,7 +1,7 @@
 module.exports = {
     name: 'ping',
     description: "returns ping of user",
-    run: async (client, message, args) => {
+    async execute (client, message, args){
 
         message.channel.send("Pinging...").then(m =>{
             const ping = m.createdTimestamp - message.createdTimestamp;

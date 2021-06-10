@@ -4,30 +4,17 @@ const fs = require('fs')
 const DiscordJS = require('discord.js')
 require('discord-reply');
 const client = new DiscordJS.Client()
-const prefix = "!"
+const prefix = ">"
 
-client.cooldowns = new DiscordJS.Collection();
-
-
-
-const eventFiles = fs.readdirSync('./events').filter(file => file.endsWith('.js'));
-
-for (const file of eventFiles) {
-	const event = require(`./events/${file}`);
-	if (event.once) {
-       client.once(event.name, (...args) => event.execute(...args, client));
-	} else {
-          client.on(event.name, (...args) => event.execute(...args, client));
-	}
-}
 
 client.commands = new DiscordJS.Collection();
+client.cooldowns = new DiscordJS.Collection();
 
-const commandFiles = fs.readdirSync('./commands/').filter(file => file.endsWith('.js'))
-for(const file of commandFiles){
-    const command = require(`./commands/${file}`);
+const commandFiles = fs.readdirSync('./commands').filter(file => file.endsWith('.js'));
 
-    client.commands.set(command.name, command)
+for (const file of commandFiles) {
+	const command = require(`./commands/${file}`);
+	client.commands.set(command.name, command);
 }
 
 
@@ -37,7 +24,7 @@ client.on('ready',function(){
     client.user.setPresence({
         status: 'online',
         activity: {
-            name: "fortnite :), try pinging me!",
+            name: "Winter",
             type: 'PLAYING',
         }
     });
@@ -59,49 +46,39 @@ client.on('message', async message => {
             message.lineReply(mentionedembed)
             }
 
+            if (!message.content.startsWith(prefix) || message.author.bot) return;
 
-    if (!message.content.startsWith(prefix)) return;
-    const args = message.content.slice(prefix).split(/ +/);
-    const commandName = args.shift().toLowerCase();
+            const args = message.content.slice(prefix.length).trim().split(/ +/);
+            const command = args.shift().toLowerCase();
+            const { cooldowns } = client;
 
+            if (!cooldowns.has(command.name)) {
+                cooldowns.set(command.name, new DiscordJS.Collection());
+            }
+            
+            const now = Date.now();
+            const timestamps = cooldowns.get(command.name);
+            const cooldownAmount = (command.cooldown || 2) * 1000;
+            if (timestamps.has(message.author.id)) {
+                const expirationTime = timestamps.get(message.author.id) + cooldownAmount;
+            
+                if (now < expirationTime) {
+                    const timeLeft = (expirationTime - now) / 1000;
+                    return message.reply(`please wait ${timeLeft.toFixed(1)} more second(s) before reusing the \`${command.name}\` command.`);
+                }
+            }
+            timestamps.set(message.author.id, now);
+setTimeout(() => timestamps.delete(message.author.id), cooldownAmount);
+            if (!client.commands.has(command)) return;
+        
+            try {
+                client.commands.get(command).execute(message.client, message, args);
+            } catch (error) {
+                console.error(error);
+                message.reply('there was an error trying to execute that command!');
+            }
 
-    const command = client.commands.get(commandName)
-      || client.commands.find(cmd => cmd.aliases && cmd.aliases.includes(commandName));
-
-
-      const { cooldowns } = client;
-
-      if (!cooldowns.has(command.name)) {
-          cooldowns.set(command.name, new DiscordJS.Collection());
-      }
-  
-      const now = Date.now();
-      const timestamps = cooldowns.get(command.name);
-      const cooldownAmount = (command.cooldown || 3) * 1000;
-
-  
-      if (timestamps.has(message.author.id)) {
-
-          const expirationTime = timestamps.get(message.author.id) + cooldownAmount;
-      
-          if (now < expirationTime) {
-              const timeLeft = (expirationTime - now) / 1000;
-              return message.reply(`please wait ${timeLeft.toFixed(1)} more second(s) before reusing the \`${command.name}\` command.`);
-          }
-      }
     
-      timestamps.set(message.author.id, now);
-      setTimeout(() => timestamps.delete(message.author.id), cooldownAmount);
-    
-   if (!command) return;
-
-    try {
-        command.run(message.client, message, args);
-    } catch (error) {
-        console.error(error);
-        message.lineReply('there was an error trying to execute that command!');
-    }
-
 })
 
 
