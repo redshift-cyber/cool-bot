@@ -35,16 +35,8 @@ client.on('ready',function(){
     console.log('Cool Bot is online!')
 })
 
-client.on("message", meesage => {
 
-    if (message.content === "hungry"){
-        msg.reply("I like feasting on knowledge and code that my developing teams feeds me")
-    }
-
-
-});
-
-    if(message.mentions.has(client.user)){
+if(message.mentions.has(client.user)){
         if (message.mentions.everyone) return;
         const mentionedembed = new DiscordJS.MessageEmbed()
             .setTitle('Hello!')
@@ -53,6 +45,7 @@ client.on("message", meesage => {
             message.lineReply(mentionedembed)
             }
 
+            
             if (!message.content.startsWith(prefix) || message.author.bot) return;
 
             const args = message.content.slice(prefix.length).trim().split(/ +/);
@@ -62,8 +55,7 @@ client.on("message", meesage => {
             if (!cooldowns.has(command.name)) {
                 cooldowns.set(command.name, new DiscordJS.Collection());
             }
-
-            const now = Date.now();
+   const now = Date.now();
             const timestamps = cooldowns.get(command.name);
             const cooldownAmount = (command.cooldown || 2) * 1000;
             if (timestamps.has(message.author.id)) {
@@ -84,7 +76,6 @@ setTimeout(() => timestamps.delete(message.author.id), cooldownAmount);
                 console.error(error);
                 message.reply('there was an error trying to execute that command!');
             }
-
 
 
 
