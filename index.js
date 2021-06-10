@@ -24,7 +24,7 @@ client.on('ready',function(){
     client.user.setPresence({
         status: 'online',
         activity: {
-            name: "Winter",
+            name: "fortnite :), try pinging me!",
             type: 'PLAYING',
         }
     });
@@ -72,7 +72,7 @@ setTimeout(() => timestamps.delete(message.author.id), cooldownAmount);
             if (!client.commands.has(command)) return;
         
             try {
-                client.commands.get(command).execute(message.client, message, args);
+                client.commands.get(command).execute(client, message,);
             } catch (error) {
                 console.error(error);
                 message.reply('there was an error trying to execute that command!');
