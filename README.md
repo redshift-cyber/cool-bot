@@ -4,6 +4,6 @@
   This is cool! The new discord bot. The bot is a completely free bot that has moderation features etc. 
 </p>
 
-  <img alt="Bot's pfp" src="images.png" style = "text-align:center; margin-left: 1000px;">
+  <img alt="Bot's pfp" src="images.png" style = "text-align:center; margin-left: 1000px; margin-right: 0;">
 
 the bot is in development right now
