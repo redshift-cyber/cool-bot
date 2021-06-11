@@ -30,7 +30,7 @@ client.on('ready',function(){
     client.user.setPresence({
         status: 'online',
         activity: {
-            name: "Winter",
+            name: "Winter Ping me for my Prefix",
             type: 'PLAYING',
         }
     });
