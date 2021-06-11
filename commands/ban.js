@@ -1,4 +1,6 @@
 const DiscordJS = require('discord.js')
+const punishmentSchema = require('../database/punishmentschem')
+
 module.exports = {
     name: 'ban',
     description: "bans a user from the guild!",
@@ -35,15 +37,23 @@ module.exports = {
                     message.channel.awaitMessages(filter, { max: 1, time: 30000})
                         .then(async collected => {
                             if(collected.first().content == "yes" || collected.first().content == "y"){
-                                target.user.send(`You have been banned from ${message.guild} for ${reason}!`).catch(error => {
+                                target.send(`You have been banned from ${message.guild} for ${reason}!`).catch(error => {
                                     message.channel.send('Was unable to dm this member.')
                                     })
-                                    await message.guild.members.ban(pingedTarget).catch(error => {
+                                    await message.guild.members.ban(target).catch(error => {
                                         return message.channel.send('There was an error trying to ban this person! Make sure I have the right permissions.')
                                     })
+                                    await punishmentSchema.create({
+                                        targetid: `${target.id}`, 
+                                        action: 'Ban',
+                                        reason: `${reason}`,
+                                        moderatorid: `${message.author.id}`,
+                                        guildid: `${message.guild.id}`,}).catch(error => {
+                                            console.log('Error adding item to the db.')
+                                        })
                                 const completedEmbed = new DiscordJS.MessageEmbed()
                                     .setTitle('Member banned')
-                                    .setDescription(`${target.tag} (${target.id}) was successfully banned for ${reason}`)
+                                    .setDescription(`${target} (${target.id}) was successfully banned for ${reason}`)
                                 message.channel.send(completedEmbed)
                             if(collected.first().content == "no" || collected.first().content == "n"){
                                 return message.channel.send('Successfuly cancelled the command!')
@@ -72,7 +82,7 @@ module.exports = {
                                 })
                                 const completedEmbed = new DiscordJS.MessageEmbed()
                                     .setTitle('Member banned')
-                                    .setDescription(`${pingedTarget.tag} (${pingedTarget.id}) was successfully banned for ${reason}`)
+                                    .setDescription(`${pingedTarget} (${pingedTarget.id}) was successfully banned for ${reason}`)
                                 message.channel.send(completedEmbed)
                             if(collected.first().content == "no" || collected.first().content == "n"){
                                 return message.channel.send('Successfuly cancelled the command!')
