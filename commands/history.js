@@ -26,7 +26,7 @@ module.exports = {
         historyEmbed.setAuthor(target.user.username, target.user.displayAvatarURL())
 
         schemainfo.forEach(element => {
-            historyEmbed.addFields({Name: `${element.reason}`, Value: `${element.action}`})
+            historyEmbed.addFields({name: `${element.action}`, value: `Reason: *${element.reason}* (${element.date})`})
         })
 
         message.channel.send(historyEmbed)

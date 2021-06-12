@@ -48,6 +48,7 @@ module.exports = {
                                         action: 'Ban',
                                         reason: `${reason}`,
                                         moderatorid: `${message.author.id}`,
+                                        date: `${Date.now()}`,
                                         guildid: `${message.guild.id}`,}).catch(error => {
                                             console.log('Error adding item to the db.')
                                         })
