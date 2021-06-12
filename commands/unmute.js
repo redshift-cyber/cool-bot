@@ -15,7 +15,7 @@ module.exports = {
       .setFooter(client.user.username, client.user.displayAvatarURL())
       .setTimestamp()
       .setColor('#2f3136')
-      if(!args) return message.channel.send(noreasonembed)
+      if(!args[0]) return message.channel.send(noreasonembed)
       const target = (message.mentions.members.first() || await message.guild.members.fetch(args[0]).catch(error => {
         return message.channel.send(':x: I was unable to find this member! Try again')
       }))
