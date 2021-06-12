@@ -37,7 +37,7 @@ module.exports = {
                     message.channel.awaitMessages(filter, { max: 1, time: 30000})
                         .then(async collected => {
                             if(collected.first().content == "yes" || collected.first().content == "y"){
-                                target.send(`You have been banned from ${message.guild} for ${reason}!`).catch(error => {
+                                await target.send(`You have been banned from ${message.guild} for ${reason}!`).catch(error => {
                                     message.channel.send('Was unable to dm this member.')
                                     })
                                     await message.guild.members.ban(target).catch(error => {
@@ -55,10 +55,11 @@ module.exports = {
                                     .setTitle('Member banned')
                                     .setDescription(`${target} (${target.id}) was successfully banned for ${reason}`)
                                 message.channel.send(completedEmbed)
+                                    }
                             if(collected.first().content == "no" || collected.first().content == "n"){
                                 return message.channel.send('Successfuly cancelled the command!')
                             }
-                            }
+                            
                         })
                     })
         }
@@ -74,7 +75,7 @@ module.exports = {
                     message.channel.awaitMessages(filter, { max: 1, time: 30000})
                         .then(async collected => {
                             if(collected.first().content == "yes" || collected.first().content == "y"){
-                                pingedTarget.user.send(`You have been banned from ${message.guild} for ${reason}!`).catch(error => {
+                               await pingedTarget.user.send(`You have been banned from ${message.guild} for ${reason}!`).catch(error => {
                                 message.channel.send('Was unable to dm this member.')
                                 })
                                 await message.guild.members.ban(pingedTarget).catch(error => {
