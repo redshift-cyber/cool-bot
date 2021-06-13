@@ -1,8 +1,9 @@
 const DiscordJS = require('discord.js')
-const punishmentSchema = require('../database/punishmentschem')
+const punishmentSchema = require('../../database/punishmentschem')
 
 module.exports = {
     name: 'ban',
+    aliases: ['b'],
     description: "bans a user from the guild!",
     async execute (client, message, args){
         const filterstuff = ['yes', 'no', 'n', 'y']

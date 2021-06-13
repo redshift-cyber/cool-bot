@@ -1,8 +1,9 @@
-const punishmentSchema = require('../database/punishmentschem')
+const punishmentSchema = require('../../database/punishmentschem')
 const DiscordJS = require('discord.js')
 module.exports = {
     name: 'unmute', //Whatever u put here will be what the command is called by (example, >hi)
-    description: "replies with a message", //this part is less important and is just for details
+    aliases: ['um'],
+    description: "unmutes a guild member", //this part is less important and is just for details
     async execute (client, message, args){ // This is like a message event and will pass in some variables
       const filterstuff = ['yes', 'no', 'n', 'y']
       const filter = m => m.author.id == message.author.id && filterstuff.some(filterstuff => filterstuff.toLowerCase())

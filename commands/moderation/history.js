@@ -1,8 +1,8 @@
-const punishmentSchema = require('../database/punishmentschem')
+const punishmentSchema = require('../../database/punishmentschem')
 const DiscordJS = require('discord.js')
 module.exports = {
     name: 'history',
-    description: "bans a user from the guild!",
+    description: "returns moderation history of a user",
     async execute (client, message, args){
         const noreasonembed = new DiscordJS.MessageEmbed()
             .setTitle('Incorrect Usage!')
