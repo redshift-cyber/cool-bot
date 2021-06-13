@@ -11,6 +11,7 @@ module.exports = {
     const commanddesc = commands.map(command => command.description).join(' \n ')
     const helpEmbed = new DiscordJS.MessageEmbed()
         .setTitle('Commands!')
+        .setDescription('**Important Information** \n > **Developers:** vunsh#3191, Iron Coder#2021 \n > **Built on:** Discord.JS v12 \n > **Bot Version:** 1.3 \n \n')
         .setColor('BLUE')
         .setFooter('Use >help (command name) for info on a specific command!')
         .addFields(
@@ -31,15 +32,16 @@ const name = args[0].toLowerCase();
 		const command = commands.get(name) || commands.find(c => c.aliases && c.aliases.includes(name));
 
 		if (!command) {
-			return message.reply('that\'s not a valid command!');
+			return message.reply('that\'s not a valid command! `>help (command name)`');
 		}
         const spHelp = new DiscordJS.MessageEmbed()
 
 		spHelp.setTitle(`Name: ${command.name}`);
+        spHelp.setColor('BLUE')
 
-		if (command.aliases) await spHelp.addField({name:`**Aliases:**`, value: `${command.aliases.join(', ')}`});
-		if (command.description) await spHelp.addField({name:`**Description:**`, value: `${command.description}`});
-		if (command.usage) await spHelp.addField({name: `**Usage:**`, value: `${prefix}${command.name} ${command.usage}`});
+		if (command.aliases) spHelp.addFields({name:`**Aliases:**`, value: `${command.aliases.join(', ')}`});
+		if (command.description) spHelp.addFields({name:`**Description:**`, value: `${command.description}`});
+		if (command.usage) spHelp.addFields({name: `**Usage:**`, value: `${prefix}${command.name} ${command.usage}`});
 
         message.channel.send(spHelp)
 
