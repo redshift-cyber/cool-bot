@@ -1,8 +1,8 @@
-const punishmentSchema = require('../database/punishmentschem')
+const punishmentSchema = require('../../database/punishmentschem')
 const DiscordJS = require('discord.js')
 module.exports = {
     name: 'history',
-    description: "bans a user from the guild!",
+    description: "returns moderation history of a user",
     async execute (client, message, args){
         const noreasonembed = new DiscordJS.MessageEmbed()
             .setTitle('Incorrect Usage!')
@@ -26,7 +26,7 @@ module.exports = {
         historyEmbed.setAuthor(target.user.username, target.user.displayAvatarURL())
 
         schemainfo.forEach(element => {
-            historyEmbed.addFields({Name: `${element.reason}`, Value: `${element.action}`})
+            historyEmbed.addFields({name: `${element.action}`, value: `Reason: *${element.reason}* (${element.date})`})
         })
 
         message.channel.send(historyEmbed)

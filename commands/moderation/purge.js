@@ -1,6 +1,7 @@
 module.exports = {
     name: 'purge',
-    description: "this clears a specified amount of messages",
+    aliases: ['p'],
+    description: "clears a specified amount of messages",
     async execute(client, message, args){
 
         if(!message.member.permissions.has('MANAGE_MESSAGES')) return message.channel.send("You do not have the permission `MANAGE_MESSAGES`");

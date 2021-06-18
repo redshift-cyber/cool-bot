@@ -1,8 +1,9 @@
-const punishmentSchema = require('../database/punishmentschem')
+const punishmentSchema = require('../../database/punishmentschem')
 const DiscordJS = require('discord.js')
 module.exports = {
     name: 'kick', //Whatever u put here will be what the command is called by (example, >hi)
-    description: "replies with a message", //this part is less important and is just for details
+    aliases: ['k'],
+    description: "kicks a member from a guild", //this part is less important and is just for details
     async execute (client, message, args){ // This is like a message event and will pass in some variables
 
       const filterstuff = ['yes', 'no', 'n', 'y']
@@ -52,6 +53,7 @@ module.exports = {
                               action: 'Kick',
                               reason: `${reason}`,
                               moderatorid: `${message.author.id}`,
+                              date: `${Date.now()}`,
                               guildid: `${message.guild.id}`,}).catch(error => {
                                   console.log('Error adding item to the db.')
                               })
