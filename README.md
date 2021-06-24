@@ -19,4 +19,4 @@
 </ul>
 
 <h2>The bot is still in development....</h2>
-<p>We are working on some cool features</p>
+<p> Don't be a fool be cool</p>
