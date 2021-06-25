@@ -2,6 +2,7 @@ const punishmentSchema = require('../../database/punishmentschem')
 const DiscordJS = require('discord.js')
 module.exports = {
     name: 'history',
+    aliases: ['h'],
     description: "returns moderation history of a user",
     async execute (client, message, args){
         const noreasonembed = new DiscordJS.MessageEmbed()
@@ -26,6 +27,7 @@ module.exports = {
         historyEmbed.setAuthor(target.user.username, target.user.displayAvatarURL())
 
         schemainfo.forEach(element => {
+            if(!element.date) return
             historyEmbed.addFields({name: `${element.action}`, value: `Reason: *${element.reason}* (${element.date})`})
         })
 
