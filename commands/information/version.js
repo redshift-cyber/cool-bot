@@ -6,6 +6,6 @@ module.exports = {
 
 const hungryEmbed = new DiscordJS.MessageEmbed()
   .setDescription("The bot's latest version is v1.3 and you are using it")
-  .setColor('WHITE')
+  .setColor('BLUE')
 message.channel.send(hungryEmbed)
     }}
