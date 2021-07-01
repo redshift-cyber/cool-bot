@@ -11,7 +11,6 @@ module.exports = {
     const commanddesc = commands.map(command => command.description).join(' \n ')
     const helpEmbed = new DiscordJS.MessageEmbed()
         .setTitle('Commands!')
-        .setDescription('**Important Information** \n > **Developers:** vunsh#3191, Iron Coder#2021 \n > **Built on:** Discord.JS v12 \n > **Bot Version:** 1.3 \n \n')
         .setColor('BLUE')
         .setFooter('Use >help (command name) for info on a specific command!')
         .addFields(

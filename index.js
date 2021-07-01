@@ -35,7 +35,7 @@ client.on('ready',function(){
     client.user.setPresence({
         status: 'online',
         activity: {
-            name: "WINTER and >help",
+            name: "WINTER >help",
             type: 'PLAYING',
         }
     });
