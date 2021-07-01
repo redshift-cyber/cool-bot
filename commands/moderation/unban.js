@@ -18,7 +18,7 @@ module.exports = {
       .setColor('#2f3136')
         if(!args[0]) return message.channel.send(noreasonembed)
 
-    if(isNaN(args[0])) return message.channel.send('You must put the id of the user ud like to unban!')
+    if(isNaN(args[0])) return message.channel.send('You must put the id of the user you would like to unban!')
 
       const userID = args[0]
 
