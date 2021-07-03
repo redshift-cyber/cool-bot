@@ -5,7 +5,7 @@ module.exports = {
     async execute (client, message, args){ // This is like a message event and will pass in some variables
 
 const hungryEmbed = new DiscordJS.MessageEmbed()
-  .setDescription("The bot's latest version is v1.3 and you are using it")
+  .setDescription("The bot's version is v1.3")
   .setColor('BLUE')
 message.channel.send(hungryEmbed)
     }}
