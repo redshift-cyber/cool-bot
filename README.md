@@ -1,9 +1,22 @@
-## Cool the new discord bot
-
-<p align="center">
-  This is cool! The new discord bot. The bot is a completely free bot that has moderation features etc. 
-  <img alt="VS Code in action" src="https://lh3.googleusercontent.com/proxy/yPE7uNJJIS8mH3PGdrW7ABsbRh5Ck-s64Z3s0MIL_krqwS4AuyX82HcggDvqM06Ln7nuQX5SWiXs2DtsjDCaCJtREw">
-</p>
+<center>
+<h1>Meet the new Cool bot!</h1>
 
 
-the bot is in development right now
+<p>Hi this is cool the new cool Discord Bot!</p>
+
+</center>
+
+<img src="images.png" height="200px" align="right">
+
+
+<h3>Here are some of the bot's features-</h3>
+<br>
+<ul>
+<li>Cool Moderation!</li>
+<li>Cool Commands!</li>
+<li>Cool help commands</li>
+<li>and more..</li>
+</ul>
+
+<h2>The bot is still in development....</h2>
+<p> Don't be a fool be cool</p>

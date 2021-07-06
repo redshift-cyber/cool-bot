@@ -5,6 +5,8 @@ const { Schema } = mongoose;
 const punishmentSchema = new Schema({
   targetid: String, 
   action: String,
+  reason: String,
+  date: Date,
   moderatorid: String,
   guildid: String,
 });
