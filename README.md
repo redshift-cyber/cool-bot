@@ -6,7 +6,7 @@
 
 </center>
 
-<img src="images.png" height="200px" align="right">
+<img src="https://raw.githubusercontent.com/Cool-official-bot/cool-bot/master/winter-snowflake-symbol_53876-95725.jpg" height="200px" align="right">
 
 
 <h3>Here are some of the bot's features-</h3>
