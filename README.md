@@ -2,7 +2,7 @@
 <h1>Meet the new Cool bot!</h1>
 
 
-<p>Hi this is cool the new cool Discord Bot!</p>
+<p>Hi this is cool the new cool Discord Bot! With advance moderation features and fun commands! this bot which is 100% free will give your server a new look!</p>
 
 </center>
 
