@@ -2,11 +2,11 @@
 <h1>Meet the new Cool bot!</h1>
 
 
-<p>Hi this is cool the new cool Discord Bot!</p>
+<p>Hi this is cool the new cool Discord Bot! With advance moderation features and fun commands! this bot which is 100% free will give your server a new look!</p>
 
 </center>
 
-<img src="https://raw.githubusercontent.com/Cool-official-bot/cool-bot/master/winter-snowflake-symbol_53876-95725.jpg" height="200px" align="right">
+<img src="logo.jpg" height="200px" align="right">
 
 
 <h3>Here are some of the bot's features-</h3>
