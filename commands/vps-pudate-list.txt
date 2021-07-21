@@ -1,2 +1,0 @@
-memeber count command 
-Version command (updated)

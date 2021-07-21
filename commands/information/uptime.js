@@ -16,7 +16,7 @@ module.exports = {
 
     const uptimee = new Discord.MessageEmbed()
         .setTitle('Cool Bot\'s current uptime!')
-        .setColor('RANDOM')
+        .setColor('BLUE')
         .setDescription(`**${days}** days \n **${hours}** hours \n **${minutes}** minutes \n **${seconds}** seconds`)
 	
 
