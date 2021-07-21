@@ -52,9 +52,9 @@ client.on('message', async message => {
 if(message.mentions.has(client.user)){
         if (message.mentions.everyone) return;
         const mentionedembed = new DiscordJS.MessageEmbed()
-            .setTitle('Hello!')
+            .setTitle('Waasup Man')
             .setColor('#038dff')
-            .setDescription(`Hi, my name is cool bot! Nice to meet you and if you might be wondering my preifx is >`)
+            .setDescription(`Hi My name is cool and I am cool 😎. I like to chill and listen to music⛄`)
             message.lineReply(mentionedembed)
             }
 
